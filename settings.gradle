@@ -1,2 +1,3 @@
 rootProject.name = 'dropwizard-jetty-nonblockingio'
 
+include 'apps:app-dw-blocking'

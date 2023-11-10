@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'io.inhibitor.dropwizard-jetty-nonblockingio'
+version '1.0-SNAPSHOT'
+
+application {
+    mainClass = 'io.inhibitor.dropwizardjettynonblockingio.apps.blocking.Application'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'io.inhibitor.dropwizardjettynonblockingio.apps.blocking.Application'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("com.google.inject:guice")
+    implementation("io.dropwizard:dropwizard-core")
+    implementation("ru.vyarus:dropwizard-guicey:7.0.1")
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    implementation 'ch.qos.logback:logback-classic:1.4.5'
+}
+
+test {
+
+}

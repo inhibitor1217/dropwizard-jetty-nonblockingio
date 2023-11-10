@@ -3,11 +3,12 @@ const wait = '/ping/wait'
 const nowait = '/ping/nowait'
 
 async function main() {
-  for (var i = 0; i < 10; i += 1) {
+  for (var i = 0; i < 100_000; i += 1) {
     const loopId = i
-    console.log(`Request ${loopId}`)
+    if (loopId % 1000 === 0) {
+      console.log(`loopId: ${loopId}`)
+    }
     fetch(`${baseUrl}${wait}`)
-      .then(res => console.log(`wait from ${loopId}: ${res.status}`))
       .catch(err => console.log(`wait from ${loopId}: ${err}`))
   }
 

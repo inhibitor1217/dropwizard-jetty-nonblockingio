@@ -1,6 +1,4 @@
 server:
   type: default
-  minThreads: 1
-  maxThreads: 5
-  maxQueuedRequests: 5
+  maxThreads: 100000
   enableVirtualThreads: true
